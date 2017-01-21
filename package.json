@@ -1,0 +1,21 @@
+{
+  "name": "argv-options",
+  "version": "0.1.0",
+  "description": "subjectively parse argv options",
+  "main": "index.js",
+  "repository": {},
+  "author": "Jan Kaßel <58153@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.14.0",
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore .",
+    "test": "mocha test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fallafeljan/argv-options.git"
+  }
+}
