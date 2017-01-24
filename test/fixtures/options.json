@@ -1,0 +1,12 @@
+{
+  "rs": {},
+
+  "os": {
+    "optional": true
+  },
+
+  "oas": {
+    "optional": true,
+    "alias": "optionalAliasedString"
+  }
+}

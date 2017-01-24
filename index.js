@@ -1,3 +1,3 @@
-module.exports = function parseOptions(argv, options) {
+module.exports = function parseOptions(argv, options, usage = null) {
   return {}
 }
