@@ -8,6 +8,6 @@ assumptions about how your CLI is designed (tbc) to keep the API simple.
 
 ## API 
 
-`parseOptions(argv [, options])`
+`parseOptions(argv, options [, usage])`
 
 (tbc)
