@@ -1,6 +1,10 @@
 {
   "rs": {},
 
+  "ri": {
+    "type": "integer"
+  },
+
   "os": {
     "optional": true
   },

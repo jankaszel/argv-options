@@ -3,20 +3,60 @@ const assert = require('assert')
 const parseOptions = require('../')
 const options = require('./fixtures/options.json')
 
+const requiredArgv = [
+  '-rs',
+  'foo',
+  '-ri',
+  '123'
+]
+
 describe('parseOptions()', () => {
+  it('should parse optional options', () => {
+    let args
+
+    const argv = requiredArgv.concat([
+      '-os',
+      'bar',
+      '-oas',
+      'baz'
+    ])
+
+    const expectedArgs = {
+      rs: 'foo',
+      ri: '123',
+      os: 'bar',
+      oas: 'baz'
+    }
+
+    assert.doesNotThrow(() => 
+      args = parseOptions(argv, options))
+
+    assert.equal(args, expectedArgs)
+  })
+
   it('should recognize aliases', () => {
-    assert(false, 'Not implemented yet')
+    let args
+
+    const argv = requiredArgv.concat([
+      '--optionalAliasedString',
+      'bar'
+    ])
+
+    const expectedArgs = {
+      rs: 'foo',
+      ri: '123',
+      oas: 'bar',
+      optionalAliasedString: 'bar'
+    }
+
+    assert.doesNotThrow(() => 
+      args = parseOptions(argv, options))
+
+    assert.equal(args, expectedArgs)
   })
 
   it('should not throw if all required options are set', () => {
     let args
-
-    const argv = [
-      '-rs',
-      'foo',
-      '-ri',
-      '123'
-    ]
 
     const expectedArgs = {
       rs: 'foo',
@@ -24,7 +64,7 @@ describe('parseOptions()', () => {
     }
 
     assert.doesNotThrow(() =>
-      args = parseOptions(argv, options))
+      args = parseOptions(requiredArgv, options))
 
     assert.equal(args, expectedArgs, 'Args did not match')
   })
