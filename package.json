@@ -1,7 +1,7 @@
 {
   "name": "argv-options",
   "version": "0.1.0",
-  "description": "subjectively parse argv options",
+  "description": "opinionated argv options parser",
   "main": "index.js",
   "repository": {},
   "author": "Jan Kaßel <58153@outlook.com>",
