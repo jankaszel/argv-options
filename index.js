@@ -1,4 +1,4 @@
-module.exports = function parseOptions(argv, options, usage = undefined) {
+module.exports = function parseOptions(argv, options) {
   let args = {}, unknownOptions = []
 
   for (let i = 0; i < argv.length; i++) {
@@ -44,12 +44,7 @@ module.exports = function parseOptions(argv, options, usage = undefined) {
   })
 
   if (unknownOptions.length > 0 || !hasRequiredOptions) {
-    if (typeof usage !== 'undefined') {
-      // eslint-disable-next-line no-console
-      console.log(usage)
-    } else {
-      throw new Error('Arguments to no correspond to `options`')
-    }
+    throw new Error('Arguments to no correspond to `options`')
   }
 
   return args

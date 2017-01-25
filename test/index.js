@@ -1,7 +1,6 @@
 /* eslint-env mocha */
 const assert = require('assert')
 const parseOptions = require('../')
-const hook_stdout = require('./util/hook_stdout')
 const options = require('./fixtures/options.json')
 
 const requiredArgv = [
@@ -86,16 +85,5 @@ describe('parseOptions()', () => {
     ])
 
     assert.throws(() => parseOptions(argv, options), Error)
-  })
-
-  it('should output usage if provided', () => {
-    const usage = 'foobar123'
-    let output = ''
-
-    const unhook = hook_stdout(string => output =+ string)
-    parseOptions([], options, usage)
-    unhook()
-
-    assert.equal(output, usage, 'Usage output did not match')
   })
 })
