@@ -78,4 +78,12 @@ describe('parseOptions()', () => {
 
     assert.throws(() => parseOptions(argv, options), Error)
   })
+
+  it('should throw if an unknown option is set', () => {
+    const argv = requiredArgv.concat([
+      '--foobar'
+    ])
+
+    assert.throws(() => parseOptions(argv, options), Error)
+  })
 })
