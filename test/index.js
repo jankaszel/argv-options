@@ -25,13 +25,14 @@ describe('parseOptions()', () => {
       rs: 'foo',
       ri: '123',
       os: 'bar',
-      oas: 'baz'
+      oas: 'baz',
+      optionalAliasedString: 'baz'
     }
 
     assert.doesNotThrow(() => 
       args = parseOptions(argv, options))
 
-    assert.equal(args, expectedArgs)
+    assert.deepEqual(args, expectedArgs)
   })
 
   it('should recognize aliases', () => {
@@ -52,7 +53,7 @@ describe('parseOptions()', () => {
     assert.doesNotThrow(() => 
       args = parseOptions(argv, options))
 
-    assert.equal(args, expectedArgs)
+    assert.deepEqual(args, expectedArgs)
   })
 
   it('should not throw if all required options are set', () => {
@@ -66,7 +67,7 @@ describe('parseOptions()', () => {
     assert.doesNotThrow(() =>
       args = parseOptions(requiredArgv, options))
 
-    assert.equal(args, expectedArgs, 'Args did not match')
+    assert.deepEqual(args, expectedArgs, 'Args did not match')
   })
 
   it('should throw if a required option is not set', () => {
