@@ -1,6 +1,6 @@
 {
   "name": "argv-options",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha",
   "description": "opinionated argv options parser",
   "main": "index.js",
   "repository": {},
