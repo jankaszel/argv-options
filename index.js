@@ -1,6 +1,6 @@
 module.exports = function parseOptions(argv, options, usage = undefined) {
   let args = {}, unknownOptions = []
-  
+
   for (let i = 0; i < argv.length; i++) {
     let foundOption = false
     const keys = Object.keys(options)
@@ -33,7 +33,17 @@ module.exports = function parseOptions(argv, options, usage = undefined) {
     }
   }
 
-  if (unknownOptions.length > 0) {
+  const hasRequiredOptions = Object.keys(options).every(key => {
+    const option = options[key]
+
+    if (!option.optional) {
+      return Object.keys(args).indexOf(key) > -1
+    } else {
+      return true
+    }
+  })
+
+  if (unknownOptions.length > 0 || !hasRequiredOptions) {
     if (typeof usage !== 'undefined') {
       // eslint-disable-next-line no-console
       console.log(usage)
