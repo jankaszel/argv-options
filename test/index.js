@@ -6,8 +6,7 @@ const options = require('./fixtures/options.json')
 const requiredArgv = [
   '-rs',
   'foo',
-  '-ri',
-  '123'
+  '-ri=123'
 ]
 
 describe('parseOptions()', () => {
