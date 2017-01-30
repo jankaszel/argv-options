@@ -1,3 +1,7 @@
+function matchesKey(arg, key, alias) {
+  return arg === `-${key}` || alias && arg === `--${alias}`
+}
+
 module.exports = function parseOptions(argv, options) {
   let args = {}, unknownOptions = []
 
@@ -9,7 +13,7 @@ module.exports = function parseOptions(argv, options) {
       const key = keys[j]
       const alias = options[key].alias
 
-      if (argv[i] === `-${key}` || alias && argv[i] === `--${alias}`) {
+      if (matchesKey(argv[i], key, alias)) {
         const k = ++i
         const val = argv[k]
 
