@@ -33,5 +33,14 @@ arugments are mandatory:
 }
 ```
 
+Parameters are required (`optional` is false) by default. Alternatively, for 
+more convenient use, aliases may be specified by using the key's value:
+
+```json
+{
+  "p": "param"
+}
+```
+
 If any non-optional parameters are missing or undocumented parameters occur,
 `parseOptions` will throw an error.
