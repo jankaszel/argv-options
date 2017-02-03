@@ -1,8 +1,8 @@
 function matchesKey(arg, key, alias) {
   return arg === `-${key}` ||
-    alias && arg === `--${alias}` /* ||
+    alias && arg === `--${alias}` ||
     arg.indexOf(`-${key}=`) === 0 ||
-    alias && arg.indexOf(`--${alias}=`) === 0 */
+    alias && arg.indexOf(`--${alias}=`) === 0
 }
 
 function getAlias(options, key) {
