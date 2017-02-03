@@ -1,5 +1,21 @@
 function matchesKey(arg, key, alias) {
-  return arg === `-${key}` || alias && arg === `--${alias}`
+  return arg === `-${key}` ||
+    alias && arg === `--${alias}` /* ||
+    arg.indexOf(`-${key}=`) === 0 ||
+    alias && arg.indexOf(`--${alias}=`) === 0 */
+}
+
+function getAlias(options, key) {
+  switch (typeof options[key]) {
+    case 'string':
+      return options[key]
+
+    case 'object':
+      return options[key].alias
+
+    default:
+      return null
+  }
 }
 
 module.exports = function parseOptions(argv, options) {
@@ -11,7 +27,7 @@ module.exports = function parseOptions(argv, options) {
 
     for (let j = 0; j < keys.length; j++) {
       const key = keys[j]
-      const alias = options[key].alias
+      const alias = getAlias(options, key)
 
       if (matchesKey(argv[i], key, alias)) {
         const k = ++i

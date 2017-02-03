@@ -4,9 +4,12 @@ const parseOptions = require('../')
 const options = require('./fixtures/options.json')
 
 const requiredArgv = [
-  '-rs',
+  '-a',
   'foo',
-  '-ri=123'
+  '-b',
+  'bar',
+  '-c',
+  '123'
 ]
 
 describe('parseOptions()', () => {
@@ -14,17 +17,19 @@ describe('parseOptions()', () => {
     let args
 
     const argv = requiredArgv.concat([
-      '-os',
+      '-d',
       'bar',
-      '-oas',
+      '-e',
       'baz'
     ])
 
     const expectedArgs = {
-      rs: 'foo',
-      ri: '123',
-      os: 'bar',
-      oas: 'baz',
+      a: 'foo',
+      b: 'bar',
+      requiredAliasedString: 'bar',
+      c: '123',
+      d: 'bar',
+      e: 'baz',
       optionalAliasedString: 'baz'
     }
 
@@ -43,9 +48,11 @@ describe('parseOptions()', () => {
     ])
 
     const expectedArgs = {
-      rs: 'foo',
-      ri: '123',
-      oas: 'bar',
+      a: 'foo',
+      b: 'bar',
+      requiredAliasedString: 'bar',
+      c: '123',
+      e: 'bar',
       optionalAliasedString: 'bar'
     }
 
@@ -59,8 +66,10 @@ describe('parseOptions()', () => {
     let args
 
     const expectedArgs = {
-      rs: 'foo',
-      ri: '123'
+      a: 'foo',
+      b: 'bar',
+      requiredAliasedString: 'bar',
+      c: '123'
     }
 
     assert.doesNotThrow(() =>

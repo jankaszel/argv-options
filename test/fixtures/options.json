@@ -1,15 +1,17 @@
 {
-  "rs": {},
+  "a": {},
 
-  "ri": {
+  "b": "requiredAliasedString",
+
+  "c": {
     "type": "integer"
   },
 
-  "os": {
+  "d": {
     "optional": true
   },
 
-  "oas": {
+  "e": {
     "optional": true,
     "alias": "optionalAliasedString"
   }
