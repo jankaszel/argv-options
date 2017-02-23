@@ -4,10 +4,8 @@ const parseOptions = require('../')
 const options = require('./fixtures/options.json')
 
 const requiredArgv = [
-  '-a',
-  'foo',
-  '-b',
-  'bar',
+  '-a=foo',
+  '-b="bar"',
   '-c',
   '123'
 ]
